@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.label import Label
+
 #from kivy.network.urlrequest import UrlRequest
 #import requests
 
