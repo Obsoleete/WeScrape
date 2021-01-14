@@ -21,18 +21,19 @@ class WeScrapeApp(App):
         self.layout = BoxLayout(orientation='vertical',padding=100,spacing=15)
         self.logo = Label(text='WeScrape',font_size=40)
         self.html = TextInput(text='Enter site url here!',size_hint=(1,0.1),multiline=False)
-        submit = Button(background_color = [0, 240, 123, 0.5], text='Submit', pos_hint={'center_x':0.5},size_hint=(None,None), width=150,height=50, on_press=self.submit) 
+        submit = Button(background_color = [0, 240, 123, 0.5], text='Extract to JSON File', pos_hint={'center_x':0.5},size_hint=(None,None), width=150,height=50, on_press=self.submit) 
         #adds widget to screen
         self.layout.add_widget(self.logo)
         self.layout.add_widget(self.html)
         self.layout.add_widget(submit)
         return self.layout   
     
+    # Gets html content and extracts the needed information which is stored in a JSON file
     def submit(self,obj):
-        self.output = TextInput(text="test",size_hint=(None,None), width=150,height=50,multiline=False)
-        self.layout.add_widget(self.output)
 
         content = get_content(self.html.text)
+        json_array = convert_to_json(content)
+        export_to_json(json_array)
 
 
 if __name__ == '__main__':
