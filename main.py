@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.label import Label
+from actions import get_content, convert_to_json, export_to_json
 
 #from kivy.network.urlrequest import UrlRequest
 #import requests
@@ -30,6 +31,8 @@ class WeScrapeApp(App):
     def submit(self,obj):
         self.output = TextInput(text="test",size_hint=(None,None), width=150,height=50,multiline=False)
         self.layout.add_widget(self.output)
+
+        content = get_content(self.html.text)
 
 
 if __name__ == '__main__':
