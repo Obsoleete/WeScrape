@@ -30,8 +30,9 @@ class WeScrapeApp(App):
     
     # Gets html content and extracts the needed information which is stored in a JSON file
     def submit(self,obj):
-
-        content = get_content(self.html.text)
+        
+        urls = [url.strip() for url in self.html.text.split(",")]
+        content = get_content(urls)
         json_array = convert_to_json(content)
         export_to_json(json_array)
 
